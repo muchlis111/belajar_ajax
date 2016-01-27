@@ -16,21 +16,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/flot', function () {
-    return view('partials.flot');
-});
+Route::get('pengunjung', 'pengunjungController@index');
+Route::get('pengunjung/{id}', 'pengunjungController@show');
+Route::post('pengunjung', 'PengunjungController@store');
+Route::put('update-pengunjung/{id}', 'PengunjungController@update');
+Route::get('hapus-pengunjung/{id}', 'PengunjungController@destroy');
+Route::get('edit-pengunjung/{id}', 'PengunjungController@edit');
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
+
+
