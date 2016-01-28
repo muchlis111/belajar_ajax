@@ -23,6 +23,12 @@
     <link href="{!! asset('dist/css/timeline.css') !!}"
           rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="{!! asset('bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') !!}"
+          rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="{!! asset('bower_components/datatables-responsive/css/dataTables.responsive.css') !!}" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="{!! asset('dist/css/sb-admin-2.css') !!}"
           rel="stylesheet">
@@ -51,7 +57,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         @include('includes.header')
-        <!-- /.navbar-top-links -->
+                <!-- /.navbar-top-links -->
         @include('includes.sidebar')
 
                 <!-- /.navbar-static-side -->
@@ -60,7 +66,7 @@
     <div id="page-wrapper">
         @yield('content')
 
-        <!-- /.row -->
+                <!-- /.row -->
     </div>
     <!-- /#page-wrapper -->
 
@@ -77,12 +83,26 @@
 <script src="{!! asset('bower_components/metisMenu/dist/metisMenu.min.js')!!}"></script>
 
 <!-- Morris Charts JavaScript -->
-<script src="{!! asset('bower_components/raphael/raphael-min.js')!!}"></script>
-<script src="{!! asset('bower_components/morrisjs/morris.min.js')!!}"></script>
-<script src="{!! asset('js/morris-data.js')!!}"></script>
+{{--<script src="{!! asset('bower_components/raphael/raphael-min.js')!!}"></script>--}}
+{{--<script src="{!! asset('bower_components/morrisjs/morris.min.js')!!}"></script>--}}
+{{--<script src="{!! asset('js/morris-data.js')!!}"></script>--}}
+
+<!-- DataTables JavaScript -->
+<script src="{!! asset('bower_components/datatables/media/js/jquery.dataTables.min.js') !!}"></script>
+<script src="{!! asset('bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') !!}"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="{!! asset('dist/js/sb-admin-2.js')!!}"></script>
+
+<script src="{!! asset('dist/js/sb-admin-2.js')!!}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').DataTable({
+            responsive: false
+        });
+    });
+</script>
 
 </body>
 

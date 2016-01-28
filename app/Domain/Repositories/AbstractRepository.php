@@ -50,8 +50,9 @@ abstract class AbstractRepository implements Repository
         $q = $this->model->create($data);
         if (!$q) {
             return $this->createError();
+
         }
-        return $this->createSucces();
+        return $this->createSuccess();
     }
 
     public function update($id, array $data)

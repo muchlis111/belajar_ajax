@@ -50,7 +50,7 @@
                                     <button type="button" class="btn btn-outline btn-primary"
                                             onclick="location.href='/pengunjung';">Kembali
                                     </button>
-                                </div>
+
                             </form>
                         </div>
                     </div>
