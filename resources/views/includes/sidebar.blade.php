@@ -8,7 +8,7 @@
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
                                 </button>
-                            </span>
+                                </span>
                 </div>
                 <!-- /input-group -->
             </li>
@@ -28,10 +28,10 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="index.blade.php"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> pengunjung</a>
+                <a href="pengunjung"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> pengunjung</a>
             </li>
             <li>
-                <a href="index.html"><i class="glyphicon glyphicon-bed" aria-hidden="true"></i> kamar</a>
+                <a href="kamar"><i class="glyphicon glyphicon-bed" aria-hidden="true"></i> kamar</a>
             </li>
             <li>
                 <a href="ajax/pages/tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>

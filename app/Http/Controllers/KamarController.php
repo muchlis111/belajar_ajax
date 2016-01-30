@@ -30,7 +30,7 @@ class KamarController extends Controller
     public function index($limit = 10)
     {
         return view('partials.kamar.index', [
-            'kamar' => $this->kamar->getByPage($limit),
+            'kamar' => $this->kamar->getByPage(),
         ]);
     }
 

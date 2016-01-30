@@ -6,15 +6,17 @@
         <div class="col-lg-12">
             <h1 class="page-header">pengunjung</h1>
         </div>
-    </div>
+      </div>
 
-    <div class="row">
+      <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     DATA PENGUNJUNG
                 </div>
-
+                <button type="button" class="btn btn-outline btn-warning"
+                        onclick="location.href='/create-pengunjung';">add
+                </button>
                 <div class="row">
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
@@ -50,10 +52,6 @@
                                                         onclick="location.href='/hapus-pengunjung/{{ $data->id}}';">
                                                     Delete
                                                 </button>
-                                                <button type="button" class="btn btn-outline btn-warning"
-                                                        onclick="location.href='/create-pengunjung';">add
-                                                </button>
-
                                             </td>
                                         </tr>
                                     @endforeach
@@ -66,5 +64,4 @@
             </div>
         </div>
     </div>
-
 @endsection
