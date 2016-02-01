@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="927aaf7e-2627-4c33-8d29-d3ded67a8d23" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Domain/Repositories/KamarRepository.php" afterPath="$PROJECT_DIR$/app/Domain/Repositories/KamarRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Domain/Repositories/PengunjungRepository.php" afterPath="$PROJECT_DIR$/app/Domain/Repositories/PengunjungRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/KamarController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/KamarController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PengunjungController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PengunjungController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/kamar/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/kamar/index.blade.php" />
     </list>
     <ignored path="ajax_data.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,8 +52,8 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/partials/kamar/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59605026">
-              <caret line="79" column="39" selection-start-line="74" selection-start-column="29" selection-end-line="79" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.2908438">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding>
                 <element signature="e#6161#6457#0#HTML" expanded="false" />
                 <element signature="e#6498#6792#0#HTML" expanded="false" />
@@ -734,11 +729,17 @@
       <option name="project" value="LOCAL" />
       <updated>1454309925193</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="menambah funtion data detail">
+      <created>1454319514012</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1454319514012</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -750,7 +751,7 @@
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43875277" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43862522" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -796,7 +797,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="menambah funtion data" />
-    <option name="LAST_COMMIT_MESSAGE" value="menambah funtion data" />
+    <MESSAGE value="menambah funtion data detail" />
+    <option name="LAST_COMMIT_MESSAGE" value="menambah funtion data detail" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1172,8 +1174,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/kamar/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59605026">
-          <caret line="79" column="39" selection-start-line="74" selection-start-column="29" selection-end-line="79" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.2908438">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding>
             <element signature="e#6161#6457#0#HTML" expanded="false" />
             <element signature="e#6498#6792#0#HTML" expanded="false" />
