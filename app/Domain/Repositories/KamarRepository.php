@@ -61,4 +61,11 @@ class KamarRepository extends AbstractRepository implements Crudable, Paginable
     {
         return parent::getByPage($limit, $columns);
     }
+    public  function getData()
+    {
+        $data = $this->model
+            ->get();
+        return $data;
+    }
+
 }

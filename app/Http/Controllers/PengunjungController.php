@@ -33,6 +33,10 @@ class pengunjungController extends Controller
             'pengunjung' => $this->pengunjung->getByPage($limit),
         ]);
     }
+    public function getData($limit = 10)
+    {
+        return $this->pengunjung->getData();
+    }
 
     public function store(Request $request)
     {

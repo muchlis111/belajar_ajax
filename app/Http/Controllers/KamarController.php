@@ -14,6 +14,12 @@ class KamarController extends Controller
         $this->kamar = $kamarRepository;
     }
 
+    public function getData($limit = 10)
+    {
+        return $this->kamar->getData();
+    }
+
+
     public function show($id)
     {
         return view('partials.kamar.detail', [

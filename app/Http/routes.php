@@ -24,10 +24,11 @@ Route::get('/create-kamar', function () {
 
 Route::get('pengunjung', 'pengunjungController@index');
 Route::get('pengunjung/{id}', 'pengunjungController@show');
-Route::post('pengunjung', 'PengunjungController@store');
-Route::put('update-pengunjung/{id}', 'PengunjungController@update');
-Route::get('hapus-pengunjung/{id}', 'PengunjungController@destroy');
-Route::get('edit-pengunjung/{id}', 'PengunjungController@edit');
+Route::post('pengunjung', 'pengunjungController@store');
+Route::put('update-pengunjung/{id}', 'pengunjungController@update');
+Route::get('hapus-pengunjung/{id}', 'pengunjungController@destroy');
+Route::get('edit-pengunjung/{id}', 'pengunjungController@edit');
+Route::get('data-pengunjung', 'pengunjungController@getData');;
 
 
 
@@ -37,7 +38,7 @@ Route::post('kamar', 'KamarController@store');
 Route::put('update-kamar/{id}', 'KamarController@update');
 Route::get('hapus-kamar/{id}', 'KamarController@destroy');
 Route::get('edit-kamar/{id}', 'KamarController@edit');
-
+Route::get('data-kamar', 'KamarController@getData');
 
 
 

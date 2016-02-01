@@ -62,4 +62,11 @@ class PengunjungRepository extends AbstractRepository implements Crudable, Pagin
     {
         return parent::getByPage($limit, $columns);
     }
+    public  function getData()
+    {
+        $data = $this->model
+            ->get();
+        return $data;
+    }
+
 }
