@@ -22,9 +22,10 @@ class KamarController extends Controller
 
     public function show($id)
     {
-        return view('partials.kamar.detail', [
-            'kamar' => $this->kamar->find($id),
-        ]);
+//        return view('partials.kamar.detail', [
+//            'kamar' => $this->kamar->find($id),
+//        ]);
+        $this->kamar->find($id);
     }
     public function edit($id)
     {

@@ -16,9 +16,10 @@ class pengunjungController extends Controller
 
     public function show($id)
     {
-        return view('partials.pengunjung.detail', [
-            'pengunjung' => $this->pengunjung->find($id),
-        ]);
+//        return view('partials.pengunjung.detail', [
+//            'pengunjung' => $this->pengunjung->find($id),
+//        ]);
+       return $this->pengunjung->find($id);
     }
     public function edit($id)
     {

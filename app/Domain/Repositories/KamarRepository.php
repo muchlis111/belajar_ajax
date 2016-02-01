@@ -20,7 +20,7 @@ class KamarRepository extends AbstractRepository implements Crudable, Paginable
 
     public function create(array $data)
     {
-        parent::create([
+       return parent::create([
                 'nomor' => e($data['nomor']),
                 'nama' => e($data['nama']),
                 'tipe' => e($data['tipe']),
@@ -28,12 +28,12 @@ class KamarRepository extends AbstractRepository implements Crudable, Paginable
 
             ]
         );
-        return redirect('/kamar');
+      //  return redirect('/kamar');
     }
 
     public function update($id, array $data)
     {
-        parent::update($id, [
+       return parent::update($id, [
                 'nomor' => e($data['nomor']),
                 'nama' => e($data['nama']),
                 'tipe' => e($data['tipe']),
@@ -41,14 +41,14 @@ class KamarRepository extends AbstractRepository implements Crudable, Paginable
             ]
         );
 
-        return redirect('/kamar');
+      //  return redirect('/kamar');
     }
 
     public function delete($id)
     {
-        parent::delete($id);
+       return parent::delete($id);
 
-        return redirect('/kamar');
+     //   return redirect('/kamar');
     }
 
     public function search($query)

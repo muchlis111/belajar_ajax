@@ -20,7 +20,7 @@ class PengunjungRepository extends AbstractRepository implements Crudable, Pagin
 
     public function create(array $data)
     {
-        parent::create([
+      return  parent::create([
                 'name' => e($data['name']),
                 'alamat' => e($data['alamat']),
                 'umur' => e($data['umur']),
@@ -28,12 +28,12 @@ class PengunjungRepository extends AbstractRepository implements Crudable, Pagin
                 'jenis_kamar' => e($data['jenis_kamar']),
             ]
         );
-        return redirect('/pengunjung');
+//        return redirect('/pengunjung');
     }
 
     public function update($id, array $data)
     {
-        parent::update($id, [
+       return parent::update($id, [
                 'name' => e($data['name']),
                 'alamat' => e($data['alamat']),
                 'umur' => e($data['umur']),
@@ -42,14 +42,14 @@ class PengunjungRepository extends AbstractRepository implements Crudable, Pagin
             ]
         );
 
-        return redirect('/pengunjung');
+//        return redirect('/pengunjung');
     }
 
     public function delete($id)
     {
-         parent::delete($id);
+        return parent::delete($id);
 
-        return redirect('/pengunjung');
+//        return redirect('/pengunjung');
     }
 
     public function search($query)

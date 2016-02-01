@@ -133,9 +133,10 @@
                             kamar
                         </div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <form  method="post">
+                            <form role="form" id="Form-edit">
+                                <div class="row">
+
+
                                         <div class="form-group">
                                             <label>nomor</label>
                                             <label>:</label>
@@ -171,77 +172,118 @@
                 </div>
             </div>
 </div>
-    <script src="{!!  asset('bower_component/jquery/dist/jquery.min.js') !!}"></script>
+    <script src="{!! asset('bower_components/jquery/dist/jquery.min.js') !!}"></script>
     <script>
-      $(document).ready(function(){
-          $("#Form-Create").submit(function (event) {
+        $(document).ready(function () {
+            $('#Create').hide();
+            $('#Edit').hide();
+            getAjax();
+            $("#Form-Create").submit(function (event) {
+                event.preventDefault();
+                var $form = $(this),
+                        nomor = $form.find("input[name='nomor']").val(),
+                        nama = $form.find("input[name='nama']").val(),
+                        tipe = $form.find("input[name='tipe']").val(),
+                        fasilitas = $form.find("input[name='fasilitas']").val();
 
-              event.preventDefault();
-              var $form = $ (this),
-                      nomor = $form.find("input[kamar='alamat']").val(),
-                      nama = $form.find("input[kamar='nama']").val(),
-                      tipe = $form.find("input[kamar='tipe']").val(),
-                      fasilitas = $form.find("input[kamar='fasilitas']").val();
-
-              //       $("#Form-Create").reset();
-                       var posting = $.post('/buku', {
-                           nomor: nomor,
-                           nama: nama,
-                           tipe: tipe,
-                           fasilitas: fasilitas
-                       });
-
-          //put the result in a div
-
-              // Put the results in a div
-              posting.done(function (data) {
+                var posting = $.post('/kamar', {
+                    nomor: nomor,
+                    nama: nama,
+                    tipe: tipe,
+                    fasilitas: fasilitas
+                                    });
+                // Put the results in a div
+                posting.done(function (data) {
 //                    console.log(data);
-                  window.alert(data.result.message);
-                  document.getElementById("Form-Create").reset();
-                  location.reload();
-                  $('#create').hide();
-                  $('#edit').hide();
-                  $('#index').show();
-              });
-          });
-      });
+                    window.alert(data.result.message);
+                    getAjax();
+                    Index();
+                });
+            });
+        });
+        function Index() {
+            $('#Create').hide();
+            $('#Edit').hide();
+            $('#Index').show();
+        }
+        function Create() {
+            $('#Index').hide();
+            $('#Edit').hide();
+            $('#Create').show();
+            $("input[name='nomor']").val('');
+            $("input[name='nama']").val('');
+            $("input[name='tipe']").val('');
+            $("input[name='fasilitas']").val('');
 
-      function Index(){
-          $('#create').hide();
-          $('#edit').hide();
-          $('index').show();
-
-      }
-      function create(){
-          $('#create').show();
-      $('#edit').hide();
-      $('index').hide();
-
-      }
-      function edit(){
-          $('#create').hide();
-      $('#edit').show();
-      $('index').show();
-
-      }
-
-      function hapus(id) {
-          var result = confirm("apakah anda ingin menghapus ?");
-          if(result) {
-              $.ajax({
-                  method : "DELETE",
-                  erl: '/kamar/' + id,
-                  data:{}
-              })
-                      .done(function (data){
-                          window.alret(data.result.message);
-                          location.reload();
-                          });
-          }
-
-      }
-
+        }
+        function getAjax() {
+            $("#tampildata").children().remove();
+            $.getJSON("/data-kamar", function (data) {
+                $.each(data.slice(0,9), function (i, data) {
+                    $("#tampildata").append("<tr><td>" + data.nomor + "</td><td>" + data.nama + "</td><td>" + data.tipe + "</td><td>" + data.fasilitas + "</td><td><button type='button' class='btn btn-outline btn-info' onclick='Edit("+ data.id +")'>Edit</button><button type='button' class='btn btn-outline btn-danger' onclick='Hapus("+ data.id +")'>Delete</button></td></tr>");
+                })
+            });
+        }
+        function Edit(id) {
+            $('#Index').hide();
+            $('#Create').hide();
+            $('#Edit').hide();
+            $.ajax({
+                        method: "Get",
+                        url: '/kamar/' + id,
+                        data: {}
+                    })
+                    .done(function (data) {
+                        console.log(data.nomor);
+//                        var $form = $(this),
+                        nomor = $("input[name='nomor']").val(data.nomor);
+                        nama = $("input[name='nama']").val(data.nama);
+                        tipe = $("input[name='tipe']").val(data.tipe);
+                        fasilitas = $("input[name='fasilitas']").val(data.fasilitas);
+                        $('#Edit').show();
+                    });
+            $("#Form-Edit").submit(function (event) {
+                event.preventDefault();
+                var $form = $(this),
+                        nomor = $form.find("input[name='nomor']").val(),
+                        nama = $form.find("input[name='nama']").val(),
+                        tipe = $form.find("input[name='tipe']").val(),
+                        fasilitas = $form.find("input[name='fasilitas']").val();
+                $.ajax({
+                            method: "PUT",
+                            url: '/kamar/' + id,
+                            data: {
+                               nomor:nomor,
+                                nama:nama,
+                                tipe:tipe,
+                                fasilitas:fasilitas
+                            }
+                        })
+                        .done(function (data) {
+                            window.alert(data.result.message);
+                            getAjax();
+                            Index();
+                        });
+            });
+        }
+        function Hapus(id) {
+            var result = confirm("Apakah Anda Yakin ingin Menghapus ?");
+            if (result) {
+                $.ajax({
+                            method: "DELETE",
+                            url: '/kamar/' + id,
+                            data: {}
+                        })
+                        .done(function (data) {
+                            window.alert(data.result.message);
+                            getAjax();
+                            Index();
+                        });
+            }
+        }
     </script>
+
+
     </body>
 
 @endsection
