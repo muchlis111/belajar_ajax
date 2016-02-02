@@ -22,9 +22,10 @@ Route::get('/create-kamar', function () {
     return view('partials.kamar.create');
 });
 
-Route::get('pengunjung', 'pengunjungController@index');
+Route::get('pengunjung', 'PengunjungController@index');
 
-Route::get('pengunjung/{id}', 'pengunjungController@show');
+Route::get('pengunjung/{id}', 'PengunjungController@show');
+Route::delete('pengunjung/{id}', 'PengunjungController@destroy');
 
 Route::post('pengunjung', 'pengunjungController@store');
 

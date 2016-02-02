@@ -6,13 +6,13 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                <marquee>kamar</marquee></h1>
+                kamar</h1>
             <button onclick="Create()"><i class="glyphicon glyphicon-plus"></i>tambah
             </button>
         </div>
     </div>
 
-    <div id="index">
+    <div id="Index">
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -22,10 +22,10 @@
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
                             @if (count($kamar) > 0)
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover" >
                                     <thead>
                                     <tr>
-                                        <th>namor</th>
+                                        <th>nomor</th>
                                         <th>nama</th>
                                         <th>tipe</th>
                                         <th>fasilitas</th>
@@ -76,7 +76,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form id="Form-creat">
+                                <form id="Form-Create">
                                     <div class="form-group">
                                         <label>nomor</label>
                                         <label>:</label>
@@ -118,7 +118,7 @@
         </div>
 </div>
         <!-- /.row -->
-        <div id="edit">
+        <div id="Edit">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">kamar</h1>
@@ -209,6 +209,10 @@
             $('#Index').hide();
             $('#Edit').hide();
             $('#Create').show();
+            $("input[name='nomor']").val("");
+            $("input[name='nama']").val("");
+            $("input[name='tipe']").val("");
+            $("input[name='fasilitas']").val("");
 
         }
         function getAjax() {
