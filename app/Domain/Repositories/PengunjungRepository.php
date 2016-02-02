@@ -20,7 +20,7 @@ class PengunjungRepository extends AbstractRepository implements Crudable, Pagin
 
     public function create(array $data)
     {
-      return  parent::create([
+      return parent::create([
                 'name' => e($data['name']),
                 'alamat' => e($data['alamat']),
                 'umur' => e($data['umur']),

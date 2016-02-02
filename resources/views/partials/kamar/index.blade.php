@@ -2,24 +2,23 @@
 @section('title', 'Page Title')
 @section('content')
 
-    <body onload="index()">
+    <body onload="Index()">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"><marque>kamar</marque></h1>
+            <h1 class="page-header">
+                <marquee>kamar</marquee></h1>
+            <button onclick="Create()"><i class="glyphicon glyphicon-plus"></i>tambah
+            </button>
         </div>
     </div>
-<div id="index"></div>
+
+    <div id="index">
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     DATA KAMAR
                 </div>
-
-                <button onclick="Create"()><i class="glyphicon glyphicon-plus"></i>tambah
-                </button>
-
-                <div class="row">
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
                             @if (count($kamar) > 0)
@@ -33,29 +32,29 @@
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    @foreach ($kamar as $data)
-                                        <tr class="">
-                                            <td>{{ $data->nomor}}</td>
-                                            <td>{{ $data->nama}}</td>
-                                            <td>{{ $data->tipe}}</td>
-                                            <td>{{ $data->fasilitas}}</td>
+                                    <tbody id="tampildata">
+                                    {{--@foreach ($kamar as $data)--}}
+                                        {{--<tr class="">--}}
+                                            {{--<td>{{ $data->nomor}}</td>--}}
+                                            {{--<td>{{ $data->nama}}</td>--}}
+                                            {{--<td>{{ $data->tipe}}</td>--}}
+                                            {{--<td>{{ $data->fasilitas}}</td>--}}
 
-                                            <td>
-                                                <button type="button" class="btn btn-outline btn-primary"
-                                                        onclick="location.href='/detail/{{ $data->id }}';">Detail
-                                                </button>
-                                                <button type="button" class="btn btn-outline btn-info"
-                                                        onclick="Edit({{ $data->id }})">Edit
-                                                </button>
-                                                <button type="button" class="btn btn-outline btn-danger"
-                                                        id="Delete" onclick="Hapus({{ $data->id }})">
-                                                    Delete
-                                                </button>
+                                            {{--<td>--}}
+                                                {{--<button type="button" class="btn btn-outline btn-primary"--}}
+                                                        {{--onclick="location.href='/detail/{{ $data->id }}';">Detail--}}
+                                                {{--</button>--}}
+                                                {{--<button type="button" class="btn btn-outline btn-info"--}}
+                                                        {{--onclick="Edit({{ $data->id }})">Edit--}}
+                                                {{--</button>--}}
+                                                {{--<button type="button" class="btn btn-outline btn-danger"--}}
+                                                        {{--id="Delete" onclick="Hapus({{ $data->id }})">--}}
+                                                    {{--Delete--}}
+                                                {{--</button>--}}
 
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                            {{--</td>--}}
+                                        {{--</tr>--}}
+                                    {{--@endforeach--}}
                                     </tbody>
                                 </table>
                             @endif
@@ -210,10 +209,6 @@
             $('#Index').hide();
             $('#Edit').hide();
             $('#Create').show();
-            $("input[name='nomor']").val('');
-            $("input[name='nama']").val('');
-            $("input[name='tipe']").val('');
-            $("input[name='fasilitas']").val('');
 
         }
         function getAjax() {
