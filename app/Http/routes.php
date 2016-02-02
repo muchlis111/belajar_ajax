@@ -29,7 +29,7 @@ Route::delete('pengunjung/{id}', 'PengunjungController@destroy');
 
 Route::post('pengunjung', 'pengunjungController@store');
 
-Route::put('update-pengunjung/{id}', 'pengunjungController@update');
+Route::put('pengunjung/{id}', 'pengunjungController@update');
 
 Route::get('hapus-pengunjung/{id}', 'pengunjungController@destroy');
 Route::get('edit-pengunjung/{id}', 'pengunjungController@edit');
@@ -39,8 +39,9 @@ Route::get('data-pengunjung', 'pengunjungController@getData');;
 
 Route::get('kamar', 'kamarController@index');
 Route::get('kamar/{id}', 'kamarController@show');
+Route::delete('kamar/{id}', 'KamarController@destroy');
 Route::post('kamar', 'KamarController@store');
-Route::put('update-kamar/{id}', 'KamarController@update');
+Route::put('kamar/{id}', 'KamarController@update');
 Route::get('hapus-kamar/{id}', 'KamarController@destroy');
 Route::get('edit-kamar/{id}', 'KamarController@edit');
 Route::get('data-kamar', 'KamarController@getData');

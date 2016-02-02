@@ -3,7 +3,7 @@ namespace App\Domain\Repositories;
 
 use App\Domain\Contracts\Crudable;
 use App\Domain\Contracts\Paginable;
-use App\Domain\Entities\kamar;
+use App\Domain\Entities\Kamar;
 use App\Domain\Repositories\AbstractRepository;
 
 class KamarRepository extends AbstractRepository implements Crudable, Paginable

@@ -19,12 +19,13 @@ class pengunjungController extends Controller
 //        return view('partials.pengunjung.detail', [
 //            'pengunjung' => $this->pengunjung->find($id),
 //        ]);
-       return $this->pengunjung->find($id);
+        return $this->pengunjung->find($id);
     }
+
     public function edit($id)
     {
-    return view('partials.pengunjung.edit', [
-            'data' => $this->pengunjung->find($id),
+        return view('partials.pengunjung.edit', [
+            'pengunjung' => $this->pengunjung->find($id),
         ]);
     }
 
@@ -34,6 +35,7 @@ class pengunjungController extends Controller
             'pengunjung' => $this->pengunjung->getByPage($limit),
         ]);
     }
+
     public function getData($limit = 10)
     {
         return $this->pengunjung->getData();
@@ -46,7 +48,8 @@ class pengunjungController extends Controller
 
     public function update($id, Request $request)
     {
-        return $this->pengunjung->update($id, $request->all());
+//        return $this->pengunjung->update($id, $request->all());
+        return $id;
     }
 
     public function destroy($id)

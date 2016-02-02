@@ -25,7 +25,7 @@ class KamarController extends Controller
 //        return view('partials.kamar.detail', [
 //            'kamar' => $this->kamar->find($id),
 //        ]);
-        $this->kamar->find($id);
+        return $this->kamar->find($id);
     }
     public function edit($id)
     {
