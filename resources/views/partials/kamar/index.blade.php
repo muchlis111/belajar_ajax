@@ -19,6 +19,11 @@
                     <div class="panel-heading">
                         DATA KAMAR
                     </div>
+                    <center>
+                        <div id="loader2">
+                            <img src=" {!! asset('images/download1.gif') !!}">
+                        </div>
+                    </center>
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
                             @if (count($kamar) > 0)
@@ -32,7 +37,7 @@
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="tampildata">
+                                    <tbody id="data-example">
                                     {{--@foreach ($kamar as $data)--}}
                                     {{--<tr class="">--}}
                                     {{--<td>{{ $data->nomor}}</td>--}}
@@ -133,6 +138,7 @@
                     <div class="panel-body">
                         <form role="form" id="Form-Edit">
                             <div class="row">
+                                <input type="hidden" name="id">
                                 <div class="form-group">
                                     <label>nomor</label>
                                     <label>:</label>
@@ -169,12 +175,45 @@
     </div>
     </div>
 
+    {{--modal--}}
+
+    {{--detail modal--}}
+    <div id="myModal" class="modal" fade="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><font face="impact">DETAIL KAMAR</font></h4>
+
+                </div>
+                <div class="modal-body">
+                    <p>some text in the modal.</p>
+                    <div id="loader-wrapper">
+                        <div id="loader"></div>
+                    </div>
+                    <table class="table table-striped">
+                        <tbody id="modal-body">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">kembali</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="{!! asset('bower_components/jquery/dist/jquery.min.js') !!}"></script>
     <script>
         $(document).ready(function () {
+            var currentRequest = null;
             $('#Create').hide();
             $('#Edit').hide();
-            getAjax();
+
             $("#Form-Create").submit(function (event) {
                 event.preventDefault();
                 var $form = $(this),
@@ -197,34 +236,81 @@
                     Index();
                 });
             });
+
+            $("#Form-Edit").submit(function (event) {
+                event.preventDefault();
+                var $form = $(this),
+                        id = $form.find("input[name='id']").val(),
+                        nomor = $form.find("input[name='nomor']").val(),
+                        nama = $form.find("input[name='nama']").val(),
+                        tipe = $form.find("input[name='tipe']").val(),
+                        fasilitas = $form.find("input[name='fasilitas']").val();
+                currentRequest = $.ajax({
+                    method: "PUT",
+                    url: '/kamar/' + id,
+                    data: {
+                        nomor: nomor,
+                        nama: nama,
+                        tipe: tipe,
+                        fasilitas: fasilitas
+                    },
+                    beforeSend: function () {
+                        if (currentRequest != null) {
+                            currentRequest.abort();
+                        }
+                    },
+                    success: function (data) {
+                        window.alert(data.result.message);
+                        getAjax();
+                        Index();
+                    },
+                    error: function (data) {
+                        window.aleart(data.result.message);
+                        Index();
+                    }
+                })
+            });
         });
         function Index() {
             $('#Create').hide();
             $('#Edit').hide();
             $('#Index').show();
+            $("#data-example").children().remove();
+            document.getElementById("Form-Create").reset();
         }
+        document.getElementById("Form-Edit").reset();
+        getAjax();
         function Create() {
             $('#Index').hide();
             $('#Edit').hide();
             $('#Create').show();
-            $("input[name='nomor']").val("");
-            $("input[name='nama']").val("");
-            $("input[name='tipe']").val("");
-            $("input[name='fasilitas']").val("");
+            document.getElementById("Form-Create").reset();
+            document.getElementById("Form-Edit").reset();
 
         }
         function getAjax() {
-            $("#tampildata").children().remove();
-            $.getJSON("/data-kamar", function (data) {
-                $.each(data.slice(0, 9), function (i, data) {
-                    $("#tampildata").append("<tr><td>" + data.nomor + "</td><td>" + data.nama + "</td><td>" + data.tipe + "</td><td>" + data.fasilitas + "</td><td><button type='button' class='btn btn-outline btn-info' onclick='Edit(" + data.id + ")'>Edit</button><button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'>Delete</button></td></tr>");
-                })
-            });
+            $("#data-example").children().remove();
+            $("#loader2").delay(2000).animate({
+                opacity: 0,
+                width: 0,
+                height: 0
+            }, 500);
+            setTimeout(function () {
+                $.getJSON("/data-kamar", function (data) {
+                    var jumlah = data.length;
+                    $.each(data.slice(0, jumlah), function (i, data) {
+                        $("#data-example").append("<tr><td>" + data.nomor + "</td><td>" + data.nama + "</td><td>" + data.tipe + "</td><td>" + data.fasilitas + "</td><td><button type='button' class='btn bttn-outline btn-info' data-toggle='modal' data-target='#myModal' onclick='Detail(" + data.id + ")'>Detial</button><button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'>Edit</button><button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'>Delete</button></td></tr>");
+
+                    })
+                });
+            }, 2200);
         }
         function Edit(id) {
             $('#Index').hide();
             $('#Create').hide();
             $('#Edit').hide();
+            document.getElementById("Form-Create").reset();
+            document.getElementById("Form-Edit").reset();
             $.ajax({
                         method: "Get",
                         url: '/kamar/' + id,
@@ -233,35 +319,35 @@
                     .done(function (data) {
                         console.log(data.nomor);
 //                        var $form = $(this),
+                        id = $("input[name='id']").val(data.id);
                         nomor = $("input[name='nomor']").val(data.nomor);
                         nama = $("input[name='nama']").val(data.nama);
                         tipe = $("input[name='tipe']").val(data.tipe);
                         fasilitas = $("input[name='fasilitas']").val(data.fasilitas);
                         $('#Edit').show();
                     });
-            $("#Form-Edit").submit(function (event) {
+        }
 
-                event.preventDefault();
-                var $form = $(this),
-                        nomor = $form.find("input[name='nomor']").val(),
-                        nama = $form.find("input[name='nama']").val(),
-                        tipe = $form.find("input[name='tipe']").val(),
-                        fasilitas = $form.find("input[name='fasilitas']").val();
-                $.ajax({
-                            method: "PUT",
-                            url: '/kamar/' + id,
-                            data: {
-                                nomor: nomor,
-                                nama: nama,
-                                tipe: tipe,
-                                fasilitas: fasilitas
-                            }
-                        })
-                        .done(function (data) {
-                            window.alert(data.result.message);
-                            getAjax();
-                            Index();
-                        });
+        // Set data on modal body
+        function Detail(id) {
+//            $("#modal-body").children().remove();
+            $.ajax({
+                method: "GET",
+                url: '/kamar/' + id,
+                data: {},
+                beforeSend: function () {
+//                    $("#loader-wrapper").show();
+
+                },
+                success: function (data) {
+                    $("#loader-wrapper").hide();
+                    $("#modal-body").append("<tr><td>nomor</td><td>:</td><td>" + data.nomor + "</td></tr>" +
+                            "<tr><td>nama</td><td>:</td><td>" + data.nama + "</td></tr>" +
+                            "<tr><td>tipe</td><td>:</td><td>" + data.tipe + "</td></tr>" +
+                            "<tr><td>fasilitas</td><td>:</td><td>" + data.fasilitas + "</td></tr>"
+                    );
+                }
+
             });
         }
         function Hapus(id) {
@@ -279,6 +365,7 @@
                         });
             }
         }
+
     </script>
 
 

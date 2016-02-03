@@ -33,7 +33,7 @@ Route::put('pengunjung/{id}', 'pengunjungController@update');
 
 Route::get('hapus-pengunjung/{id}', 'pengunjungController@destroy');
 Route::get('edit-pengunjung/{id}', 'pengunjungController@edit');
-Route::get('data-pengunjung', 'pengunjungController@getData');;
+Route::get('data-pengunjung', 'pengunjungController@getData');
 
 
 
