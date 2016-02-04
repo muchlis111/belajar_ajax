@@ -249,6 +249,7 @@
             $("#Form-Edit").submit(function (event) {
                 event.preventDefault();
                 var $form = $(this),
+                        id = $form.find("input[name='id']").val(),
                         name = $form.find("input[name='name']").val(),
                         alamat = $form.find("input[name='alamat']").val(),
                         umur = $form.find("input[name='umur']").val(),

@@ -48,8 +48,8 @@ class pengunjungController extends Controller
 
     public function update($id, Request $request)
     {
-//        return $this->pengunjung->update($id, $request->all());
-        return $id;
+        return $this->pengunjung->update($id, $request->all());
+//        return $id;
     }
 
     public function destroy($id)
