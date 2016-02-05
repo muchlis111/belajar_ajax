@@ -61,10 +61,10 @@ class Lama_hariRepository extends AbstractRepository implements Crudable, Pagina
     {
         return parent::getByPage($limit, $columns);
     }
-    public  function getData()
+
+    public function getData()
     {
-        $data = $this->model
-            ->get();
+        $data = $this->model->get();
         return $data;
     }
 

@@ -34,7 +34,7 @@
                 <a href="kamar"><i class="glyphicon glyphicon-bed" aria-hidden="true"></i> kamar</a>
             </li>
             <li>
-                <a href="lama_hari"><i class="glyphicon glyphicon-certificate" aria-hidden="true"></i> lama hari</a>
+                <a href="lama_hari"><i class="glyphicon glyphicon-certificate" aria-hidden="true"></i>data penginapan</a>
             </li>
             <li>
                 <a href="ajax/pages/tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>

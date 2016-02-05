@@ -5,7 +5,7 @@
     <body onload="Index()">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">lama_hari</h1>
+            <h1 class="page-header" ><b>DATA PENGINAPAN</b></h1>
             <button onclick="Create()"><i class="glyphicon glyphicon-plus"></i>tambah
             </button>
         </div>
@@ -204,8 +204,8 @@
             $("#Form-Create").submit(function (event) {
                 event.preventDefault();
                 var $form = $(this),
-                        pengunjung = $form.find("input[name='pengunjung']").val(),
-                        kamar = $form.find("input[name='kamar']").val(),
+                        pengunjung = $form.find("select[name='pengunjung']").val(),
+                        kamar = $form.find("select[name='kamar']").val(),
                         lama_hari = $form.find("input[name='lama_hari']").val();
 
 
@@ -265,9 +265,9 @@
             $('#Index').show();
             $("#data-example").children().remove();
             document.getElementById("Form-Create").reset();
-//            getAjax();
+            document.getElementById("Form-Edit").reset();
         }
-        document.getElementById("Form-Edit").reset();
+
         getAjax();
         function Create() {
             $('#Index').hide();
@@ -284,7 +284,7 @@
                 var jumlah = data.length;
                 $("#pengunjung").append("<option selected>pilih pengunjung</option>");
                 $.each(data.slice(0, jumlah), function (i, data) {
-                    $("#pengunjung").append("<option value='" + data.id + "'>)" + data.name + "</option>");
+                    $("#pengunjung").append("<option value='" + data.id + "'>" + data.name + "</option>");
                 })
             });
 
@@ -295,7 +295,7 @@
                 var jumlah = data.length;
                 $("#kamar").append("<option selected>pilih kamar</option>");
                 $.each(data.slice(0, jumlah), function (i, data) {
-                    $("#kamar").append("<option value='" + data.id + "'>)" + data.nomor + "</option>");
+                    $("#kamar").append("<option value='" + data.id + "'>" + data.nomor + "</option>");
                 })
             });
 
@@ -311,7 +311,7 @@
                 $.getJSON("/data-lama_hari", function (data) {
                     var jumlah = data.length;
                     $.each(data.slice(0, jumlah), function (i, data) {
-                        $("#data-example").append("<tr><td>" + data.pengunjung + "</td><td>" + data.kamar + "</td><td>" + data.lama_hari + "</td><td><button type='button' class='btn bttn-outline btn-info' data-toggle='modal' data-target='#myModal' onclick='Detail(" + data.id + ")'>Detail</button><button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'>Edit</button><button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'>Delete</button></td></tr>");
+                        $("#data-example").append("<tr><td>" + data.pengunjung.name + "</td><td>" + data.kamar.nama + "</td><td>" + data.lama_hari + "</td><td><button type='button' class='btn bttn-outline btn-info' data-toggle='modal' data-target='#myModal' onclick='Detail(" + data.id + ")'>Detail</button><button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'>Edit</button><button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'>Delete</button></td></tr>");
 
                     })
                 });
@@ -352,8 +352,8 @@
                 },
                 success: function (data) {
                     $("#loader-wrapper").hide();
-                    $("#modal-body").append("<tr><td>pengunjung</td><td>:</td><td>" + data.pengunjung + "</td></tr>" +
-                            "<tr><td>kamar</td><td>:</td><td>" + data.kamar + "</td></tr>" +
+                    $("#modal-body").append("<tr><td>pengunjung</td><td>:</td><td>" + data.pengunjung.name + "</td></tr>" +
+                            "<tr><td>kamar</td><td>:</td><td>" + data.kamar.nomor + "</td></tr>" +
                             "<tr><td>lama_hari</td><td>:</td><td>" + data.lama_hari + "</td></tr>"
 
                     );
