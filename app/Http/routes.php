@@ -22,6 +22,10 @@ Route::get('/create-kamar', function () {
     return view('partials.kamar.create');
 });
 
+    Route::get('/create-lama_hari', function () {
+        return view('partials.lama_hari.create');
+    });
+
 Route::get('pengunjung', 'PengunjungController@index');
 
 Route::get('pengunjung/{id}', 'PengunjungController@show');
@@ -45,6 +49,15 @@ Route::put('kamar/{id}', 'KamarController@update');
 Route::get('hapus-kamar/{id}', 'KamarController@destroy');
 Route::get('edit-kamar/{id}', 'KamarController@edit');
 Route::get('data-kamar', 'KamarController@getData');
+
+Route::get('lama_hari', 'lama_hariController@index');
+Route::get('lama_hari/{id}', 'lama_hariController@show');
+Route::delete('lama_hari/{id}', 'Lama_hariController@destroy');
+Route::post('lama_hari', 'Lama_hariController@store');
+Route::put('lama_hari/{id}', 'Lama_hariController@update');
+Route::get('hapus-lama_hari/{id}', 'Lama_hariController@destroy');
+Route::get('edit-lama_hari/{id}', 'Lama_hariController@edit');
+Route::get('data-lama_hari', 'Lama_hariController@getData');
 
 
 
