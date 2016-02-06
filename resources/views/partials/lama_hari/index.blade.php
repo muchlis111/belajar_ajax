@@ -136,13 +136,14 @@
                                 <div class="form-group">
                                     <label>pengunjung</label>
                                     <label>:</label>
-                                    <input type="text" class="form-control" name="pengunjung" >
-                                </div>
+                                    <select id="pengunjung" class="form-control" name="pengunjung" >
+                               </select></div>
+
                                 <div class="form-group">
                                     <label>kamar</label>
                                     <label>:</label>
-                                    <input type="text" class="form-control" name="kamar" >
-                                </div>
+                                    <select id="kamar" class="form-control" name="kamar" >
+                               </select> </div>
                                 <div class="form-group">
                                     <label>lama_hari</label>
                                     <label>:</label>
@@ -229,8 +230,8 @@
                 event.preventDefault();
                 var $form = $(this),
                         id = $form.find("input[name='id']").val(),
-                        pengunjung = $form.find("input[name='pengunjung']").val(),
-                        kamar = $form.find("input[name='kamar']").val(),
+                        pengunjung = $form.find("select[name='pengunjung']").val(),
+                        kamar = $form.find("select[name='kamar']").val(),
                         lama_hari = $form.find("input[name='lama_hari']").val();
                 currentRequest = $.ajax({
                     method: "PUT",
@@ -320,7 +321,7 @@
         function Edit(id) {
             $('#Index').hide();
             $('#Create').hide();
-            $('#Edit').hide();
+            $('#Edit').show();
             document.getElementById("Form-Create").reset();
             document.getElementById("Form-Edit").reset();
             $.ajax({
@@ -328,15 +329,33 @@
                         url: '/lama_hari/' + id,
                         data: {}
                     })
-                    .done(function (data) {
-                        console.log(data.pengunjung);
-//                        var $form = $(this),
-                        id = $("input[name='id']").val(data.id);
-                        pengunjung = $("input[name='pengunjung']").val(data.pengunjung);
-                        kamar = $("input[name='kamar']").val(data.kamar);
-                        lama_hari = $("input[name='lama_hari']").val(data.lama_hari);
-
-                        $('#Edit').show();
+                    .done(function (data_edit) {
+//                        console.log(data_edit.makanan_id.id);
+                        $("input[name='id']").val(data_edit.id);
+                        $("input[name='lama_hari']").val(data_edit.lama_hari);
+                        $.getJSON("/data-pengunjung", function (data) {
+                            var jumlah = data.length;
+                            $.each(data.slice(0, jumlah), function (i, data) {
+                                if (data_edit.pengunjung.id == data.id) {
+                                    $("select[name='pengunjung']").append("<option value='" + data.id + "' selected>" + data.name + "</option>");
+                                }
+                                else {
+                                    $("select[name='pengunjung']").append("<option value='" + data.id + "'>" + data.name + "</option>");
+                                }
+                            })
+                        });
+                        $.getJSON("/data-kamar", function (data) {
+                            var jumlah = data.length;
+                            $.each(data.slice(0, jumlah), function (i, data) {
+                                if (data_edit.kamar.id == data.id) {
+                                    $("select[name='kamar']").append("<option value='" + data.id + "' selected>" + data.nomor + "</option>");
+                                }
+                                else {
+                                    $("select[name='kamar']").append("<option value='" + data.id + "'>" + data.nomor + "</option>");
+                                }
+                            })
+                        });
+                        $('#edit').show();
                     });
         }
         // Set data on modal body
